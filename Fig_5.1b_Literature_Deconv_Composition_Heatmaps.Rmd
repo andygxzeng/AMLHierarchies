@@ -1,0 +1,286 @@
+
+```{r}
+library(ComplexHeatmap)
+library(tidyverse)
+library(metap)
+library(circlize)
+library(janitor)
+library(dendextend)
+library(plyr)
+library(dplyr)
+```
+
+```{r}
+CDK6 <- read.csv(file = "CDK6.csv")
+CDK6 <- as.data.frame(t(CDK6))
+CDK6 <- janitor::row_to_names(CDK6, row_number = 1)
+CDK6[] <- lapply(CDK6, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-4,0,4), c("#7b3294", "white", "#008837"))
+```
+
+```{r, fig.height = 2, fig.width=1.4}
+Heatmap(CDK6, name = "_", height = unit(5, "cm"), width = unit(1, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 6),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(4, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        )
+)
+```
+```{r}
+IDH <- read.csv(file = "IDH.csv")
+IDH <- as.data.frame(t(IDH))
+IDH <- janitor::row_to_names(IDH, row_number = 1)
+IDH[] <- lapply(IDH, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-4,0,4), c("#7b3294", "white", "#008837"))
+```
+
+```{r, fig.height = 2, fig.width=1.4}
+Heatmap(IDH, name = "_", height = unit(5, "cm"), width = unit(1, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 6),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(4, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        )
+)
+```
+
+```{r}
+ATRA <- read.csv(file = "ATRA.csv")
+ATRA <- as.data.frame(t(ATRA))
+ATRA <- janitor::row_to_names(ATRA, row_number = 1)
+ATRA[] <- lapply(ATRA, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-4,0,4), c("#7b3294", "white", "#008837"))
+```
+
+```{r, fig.height = 2, fig.width=1.4}
+Heatmap(ATRA, name = "_", height = unit(5, "cm"), width = unit(1, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 6),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(4, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        )
+)
+```
+
+```{r}
+Brequinar <- read.csv(file = "Brequinar.csv")
+Brequinar <- as.data.frame(t(Brequinar))
+Brequinar <- janitor::row_to_names(Brequinar, row_number = 1)
+Brequinar[] <- lapply(Brequinar, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-4,0,4), c("#7b3294", "white", "#008837"))
+```
+
+```{r, fig.height = 2, fig.width=1.4}
+Heatmap(Brequinar, name = "_", height = unit(5, "cm"), width = unit(1, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 6),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(4, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        )
+)
+```
+
+
+```{r}
+C0 <- read.csv(file = "Cluster0.csv")
+C0 <- as.data.frame(t(C0))
+C0 <- janitor::row_to_names(C0, row_number = 1)
+C0[] <- lapply(C0, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-5,0,5), c("#7b3294", "white", "#008837"))
+```
+
+```{r}
+clusters = HeatmapAnnotation(
+  cluster = anno_block(gp = gpar(fill = "#1f77b4", col = "white"), height = unit(0.2, "cm")),
+  clutser_name = anno_block(gp = gpar(fill = "white", col = "white"), labels = ("0"), labels_gp = gpar(col = "black", fontsize = 6), height = unit(0.2, "cm"))
+)
+```
+
+```{r, fig.height = 5, fig.width=3}
+c0heatmap = Heatmap(C0, name = "_", height = unit(12, "cm"), width = unit(1, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 8),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(6, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        ), bottom_annotation = clusters
+)
+```
+
+```{r}
+C1 <- read.csv(file = "Cluster1.csv")
+C1 <- as.data.frame(t(C1))
+C1 <- janitor::row_to_names(C1, row_number = 1)
+C1[] <- lapply(C1, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-5,0,5), c("#7b3294", "white", "#008837"))
+```
+
+```{r}
+clusters = HeatmapAnnotation(
+  cluster = anno_block(gp = gpar(fill = "#ff7f0e", col = "white"), height = unit(0.2, "cm")),
+  clutser_name = anno_block(gp = gpar(fill = "white", col = "white"), labels = ("1"), labels_gp = gpar(col = "black", fontsize = 6), height = unit(0.2, "cm"))
+)
+```
+
+```{r, fig.height = 5, fig.width=3}
+c1heatmap = Heatmap(C1, name = "_", height = unit(12, "cm"), width = unit(0.83, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 8),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(6, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        ), bottom_annotation = clusters
+)
+```
+
+```{r}
+C2 <- read.csv(file = "Cluster2.csv")
+C2 <- as.data.frame(t(C2))
+C2 <- janitor::row_to_names(C2, row_number = 1)
+C2[] <- lapply(C2, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-5,0,5), c("#7b3294", "white", "#008837"))
+```
+
+```{r}
+clusters = HeatmapAnnotation(
+  cluster = anno_block(gp = gpar(fill = "#279e68", col = "white"), height = unit(0.2, "cm")),
+  clutser_name = anno_block(gp = gpar(fill = "white", col = "white"), labels = ("2"), labels_gp = gpar(col = "black", fontsize = 6), height = unit(0.2, "cm"))
+)
+```
+
+```{r, fig.height = 5, fig.width=3}
+c2heatmap = Heatmap(C2, name = "_", height = unit(12, "cm"), width = unit(0.79, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 8),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(6, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        ), bottom_annotation = clusters
+)
+```
+
+```{r}
+C3 <- read.csv(file = "Cluster3.csv")
+C3 <- as.data.frame(t(C3))
+C3 <- janitor::row_to_names(C3, row_number = 1)
+C3[] <- lapply(C3, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-5,0,5), c("#7b3294", "white", "#008837"))
+```
+
+```{r}
+clusters = HeatmapAnnotation(
+  cluster = anno_block(gp = gpar(fill = "#d62728", col = "white"), height = unit(0.2, "cm")),
+  clutser_name = anno_block(gp = gpar(fill = "white", col = "white"), labels = ("3"), labels_gp = gpar(col = "black", fontsize = 6), height = unit(0.2, "cm"))
+)
+```
+
+```{r, fig.height = 5, fig.width=3}
+c3heatmap = Heatmap(C3, name = "_", height = unit(12, "cm"), width = unit(0.79, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 8),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(6, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        ), bottom_annotation = clusters
+)
+```
+
+```{r}
+C4 <- read.csv(file = "Cluster4.csv")
+C4 <- as.data.frame(t(C4))
+C4 <- janitor::row_to_names(C4, row_number = 1)
+C4[] <- lapply(C4, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-5,0,5), c("#7b3294", "white", "#008837"))
+```
+
+```{r}
+clusters = HeatmapAnnotation(
+  cluster = anno_block(gp = gpar(fill = "#aa40fc", col = "white"), height = unit(0.2, "cm")),
+  clutser_name = anno_block(gp = gpar(fill = "white", col = "white"), labels = ("4"), labels_gp = gpar(col = "black", fontsize = 6), height = unit(0.2, "cm"))
+)
+```
+
+```{r, fig.height = 5, fig.width=3}
+c4heatmap = Heatmap(C4, name = "_", height = unit(12, "cm"), width = unit(0.45, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 8),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(6, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        ), bottom_annotation = clusters
+)
+```
+
+```{r}
+C5 <- read.csv(file = "Cluster5.csv")
+C5 <- as.data.frame(t(C5))
+C5 <- janitor::row_to_names(C5, row_number = 1)
+C5[] <- lapply(C5, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-5,0,5), c("#7b3294", "white", "#008837"))
+```
+
+```{r}
+clusters = HeatmapAnnotation(
+  cluster = anno_block(gp = gpar(fill = "#8c564b", col = "white"), height = unit(0.2, "cm")),
+  clutser_name = anno_block(gp = gpar(fill = "white", col = "white"), labels = ("5"), labels_gp = gpar(col = "black", fontsize = 6), height = unit(0.2, "cm"))
+)
+```
+
+```{r, fig.height = 5, fig.width=3}
+c5heatmap = Heatmap(C5, name = "_", height = unit(12, "cm"), width = unit(0.31, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 8),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(6, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        ), bottom_annotation = clusters
+)
+```
+
+```{r}
+C6 <- read.csv(file = "Cluster6.csv")
+C6 <- as.data.frame(t(C6))
+C6 <- janitor::row_to_names(C6, row_number = 1)
+C6[] <- lapply(C6, function(x) as.numeric(as.character(x)))
+colours = colorRamp2(c(-5,0,5), c("#7b3294", "white", "#008837"))
+```
+
+```{r}
+clusters = HeatmapAnnotation(
+  cluster = anno_block(gp = gpar(fill = "#e377c2", col = "white"), height = unit(0.2, "cm")),
+  clutser_name = anno_block(gp = gpar(fill = "white", col = "white"), labels = ("6"), labels_gp = gpar(col = "black", fontsize = 6), height = unit(0.2, "cm"))
+)
+```
+
+
+```{r, fig.height = 5, fig.width=3}
+c6heatmap = Heatmap(C6, name = "_", height = unit(12, "cm"), width = unit(0.14, "cm"),  
+        col = colours, color_space = "LAB", border = TRUE, border_gp = gpar(col = "black", lty = 1), 
+        cluster_rows = FALSE, cluster_columns = TRUE, show_column_names = FALSE, row_names_gp = gpar(fontsize = 8),
+        row_names_side = "left", show_row_names = TRUE, column_dend_reorder = TRUE, show_column_dend = FALSE, heatmap_legend_param = list(
+          legend_height = unit(6, "cm"),
+          grid_width = unit(0.2, "cm"),
+          title_gp = gpar(col="white")
+        ), bottom_annotation = clusters
+)
+```
+
+```{r, fig.height = 5, fig.width=3}
+final = c2heatmap + c5heatmap + c1heatmap + c6heatmap + c3heatmap + c0heatmap + c4heatmap
+draw(final, ht_gap = unit(0, "mm"), heatmap_legend_side = "right")
+```
