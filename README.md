@@ -1,7 +1,8 @@
 ## A cellular hierarchy framework for understanding heterogeneity and predicting drug response in AML (Zeng et al)
 This repository contains analysis notebooks and scripts corresponding to the main figures, as well as scRNA-seq data and deconvolution results used in the paper.  
 
-AML represents a caricature of normal hematopoietic development, with this developmental process being distorted in a unique way for each patient. Our study aimed to understand how leukemia cell hierarchies vary from patient to patient and how this related to the functional, genomic, and clinical properties of each patient's disease.  
+
+**AML represents a caricature of normal hematopoietic development**, and this developmental process is distorted in different ways for different patients. Our study aimed to understand how leukemia cell hierarchies vary from patient to patient and how this relates to the functional, genomic, and clinical properties of each patient's disease.  
 
 This analysis started with a focused [re-analysis of primitive AML cells](https://github.com/andygxzeng/AMLHierarchies/blob/main/Fig_1.1_LSPC_Reclustering_Characterization.ipynb) at the apex of leukemia cell hierarchies and applied deconvolution to understand how each of these primitive cell types relate to [functional LSC activity](https://github.com/andygxzeng/AMLHierarchies/blob/main/Fig_1.2_LSC_Analysis.ipynb). By profiling the leukemic hierarchy compositions of [over 1000 AML patients](https://github.com/andygxzeng/AMLHierarchies/blob/main/Fig_2.0_Cohort_Cluster_Survival.ipynb), we found that hierarchy composition was associated with [survival outcomes](https://github.com/andygxzeng/AMLHierarchies/blob/main/Fig_2.2_Hierarchy_Survival.ipynb), [genomic alterations](https://github.com/andygxzeng/AMLHierarchies/blob/main/Fig_2.1_Hierarchy_Genomic_Correlates.ipynb), and [disease relapse](https://github.com/andygxzeng/AMLHierarchies/blob/main/Fig_3.0_Relapse_Deconvolution.ipynb). 
 
